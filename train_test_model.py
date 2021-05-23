@@ -1,7 +1,7 @@
 import argparse as ap
 import pandas as pd
 from imblearn.over_sampling import RandomOverSampler
-# import nltk
+import nltk
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import string
@@ -13,8 +13,8 @@ import warnings
 from datetime import datetime as dt
 import joblib
 
-# nltk.download('punkt')
-# nltk.download('stopwords')
+nltk.download('punkt')
+nltk.download('stopwords')
 warnings.filterwarnings("ignore")
 
 
