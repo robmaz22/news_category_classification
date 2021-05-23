@@ -1,7 +1,7 @@
 import argparse as ap
 import pandas as pd
 from imblearn.over_sampling import RandomOverSampler
-import nltk
+# import nltk
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import string
@@ -13,8 +13,8 @@ import warnings
 from datetime import datetime as dt
 import joblib
 
-nltk.download('punkt')
-nltk.download('stopwords')
+# nltk.download('punkt')
+# nltk.download('stopwords')
 warnings.filterwarnings("ignore")
 
 
@@ -85,13 +85,14 @@ def run():
     model.fit(X_train, y_train)
     print(f'Uzysykana dokładność modelu: {model.score(X_test, y_test) * 100:.2f} %')
 
-    print('Czy zapisać wytrenowany model wraz z zakodowanymi etykietami?[Y/n]')
+    print('Czy zapisać wytrenowany model wraz z enkoderami?[Y/n]')
     answer = input('>>>')
 
     if answer in ['Y', 'y']:
         date = dt.now().strftime("%d_%m_%Y_%H_%M")
         joblib.dump(model, f'{args.output}model_{date}.pkl')
         joblib.dump(le, f'{args.output}labels_{date}.pkl')
+        joblib.dump(vectorizer, f'{args.output}vectorizer_{date}.pkl')
 
 
 if __name__ == '__main__':
